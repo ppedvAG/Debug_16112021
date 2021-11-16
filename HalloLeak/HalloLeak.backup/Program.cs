@@ -12,38 +12,17 @@ namespace HalloLeak
         static void Main(string[] args)
         {
             Console.WriteLine("Hallo");
-            //FillLongs();
 
-            Thread.Sleep(1000);
-
-            PferdeErstellen();
-
-            Thread.Sleep(1000);
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            GC.Collect();
-
-            Thread.Sleep(1000);
             PferdeErstellen();
 
             Console.WriteLine("Ende");
             Console.ReadKey();
         }
 
-        private static void FillLongs()
-        {
-            List<DateTime> list = new List<DateTime>();
-            var dd = DateTime.Now;
-            while (true)
-            {
-                list.Add(dd);
-            }
-        }
-
         private static void PferdeErstellen()
         {
             List<Pferd> list = new List<Pferd>();
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; /*i < 100000*/; i++)
             {
                 var p = new Pferd() { Name = $"Pferd #{i:00000000}" };
                 list.Add(p);
