@@ -1,0 +1,20 @@
+﻿<Window x:Class="HalloAsync_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HalloAsync_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="200">
+    <StackPanel>
+        <Button Click="OhneThread">Ohne Threading</Button>
+        <Button Click="StartTask" >Start Task (Invoke)</Button>
+        <Button Click="StartTaskMitTs" >Start Task (TS)</Button>
+        <Button Click="StartAsync" >Start Async</Button>
+        <Button Click="StartAltAsync" >Start Alt und Langsam</Button>
+        <Button Click="ParalellEx">Para Ex</Button>
+        <Button Click="ThrowEx">Throw Ex</Button>
+        <ProgressBar Height="22" Name="pb1"/>
+        <Button Click="StartCancel">Cancel</Button>
+    </StackPanel>
+</Window>
