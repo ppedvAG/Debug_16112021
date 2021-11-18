@@ -70,8 +70,24 @@ namespace GC_Cirrrr
                 var xx = Math.Pow(i / 2, i);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var aaa = new MyClass();
+            aaa.FetteAction += Aaa_FetteAction;
+
+        }
+
+        private void Aaa_FetteAction()
+        {
+            
+        }
     }
 
+    class MyClass
+    {
+        public event Action FetteAction;
+    }
     class A
     {
         public B B { get; set; }
