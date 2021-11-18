@@ -12,7 +12,7 @@ namespace HalloLeak
         static void Main(string[] args)
         {
             Console.WriteLine("Hallo");
-            //FillLongs();
+            FillLongs();
 
             Thread.Sleep(1000);
 
@@ -45,11 +45,15 @@ namespace HalloLeak
 
         private static void FillLongs()
         {
-            List<DateTime> list = new List<DateTime>();
-            var dd = DateTime.Now;
-            while (true)
+            List<List<long>> list = new List<List<long>>();
+            for (int i = 0; i < 1000000; i++)
             {
-                list.Add(dd);
+                var l = new List<long>();
+                for (int j = 0; j < 1000000; j++)
+                {
+                    l.Add(i + j);
+                }
+                list.Add(l);
             }
         }
 
