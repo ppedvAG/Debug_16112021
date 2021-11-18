@@ -16,15 +16,28 @@ namespace HalloLeak
 
             Thread.Sleep(1000);
 
-            PferdeErstellen();
 
-            Thread.Sleep(1000);
+            Console.WriteLine("Mache pferde:");
+            Console.ReadLine();
+            var p1 = new PferdeManager();
+            Console.WriteLine("Pferde gemacht");
+            Console.ReadLine();
+            p1 = null;
+            Console.WriteLine("Pferde = NULL");
+            Console.ReadLine();
+
+
+            //Console.WriteLine(wr.IsAlive);
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
+            //Console.WriteLine(wr.IsAlive);
+
+            Console.WriteLine("GC zeug fertig");
+
 
             Thread.Sleep(1000);
-            PferdeErstellen();
+            var p2 = new PferdeManager();
 
             Console.WriteLine("Ende");
             Console.ReadKey();
@@ -40,9 +53,19 @@ namespace HalloLeak
             }
         }
 
-        private static void PferdeErstellen()
+
+        static WeakReference wr = null;
+
+    }
+
+    class PferdeManager
+    {
+        List<Pferd> list = new List<Pferd>();
+        public PferdeManager()
         {
-            List<Pferd> list = new List<Pferd>();
+
+
+            //wr = new WeakReference(list);
             for (int i = 0; i < 100000; i++)
             {
                 var p = new Pferd() { Name = $"Pferd #{i:00000000}" };
@@ -53,6 +76,7 @@ namespace HalloLeak
             }
         }
     }
+
 
     public class Pferd
     {
