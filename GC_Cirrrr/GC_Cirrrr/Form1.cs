@@ -76,17 +76,24 @@ namespace GC_Cirrrr
             var aaa = new MyClass();
             aaa.FetteAction += Aaa_FetteAction;
 
+            aaa.Mach();
         }
 
-        private void Aaa_FetteAction()
+        private void Aaa_FetteAction(object sender, EventArgs e)
         {
-            
+            list.Add(sender);
         }
+        List<Object> list = new List<Object>(); 
     }
 
     class MyClass
     {
-        public event Action FetteAction;
+        public event EventHandler FetteAction;
+
+        internal void Mach()
+        {
+            FetteAction(this, null);
+        }
     }
     class A
     {
